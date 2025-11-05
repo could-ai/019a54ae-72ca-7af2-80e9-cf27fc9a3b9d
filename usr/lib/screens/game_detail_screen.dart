@@ -40,6 +40,39 @@ class GameDetailScreen extends StatelessWidget {
                       ),
                     ),
                   ),
+                  Positioned(
+                    top: 60,
+                    right: 16,
+                    child: Container(
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 12,
+                        vertical: 6,
+                      ),
+                      decoration: BoxDecoration(
+                        color: Colors.green,
+                        borderRadius: BorderRadius.circular(20),
+                      ),
+                      child: const Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Icon(
+                            Icons.check_circle,
+                            color: Colors.white,
+                            size: 16,
+                          ),
+                          SizedBox(width: 4),
+                          Text(
+                            'FREE',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 12,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
@@ -92,12 +125,39 @@ class GameDetailScreen extends StatelessWidget {
                     ],
                   ),
                   const SizedBox(height: 8),
-                  Text(
-                    game.genre,
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: Colors.grey.shade400,
-                    ),
+                  Row(
+                    children: [
+                      Text(
+                        game.genre,
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: Colors.grey.shade400,
+                        ),
+                      ),
+                      const SizedBox(width: 12),
+                      Container(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 8,
+                          vertical: 4,
+                        ),
+                        decoration: BoxDecoration(
+                          color: Colors.green.withOpacity(0.2),
+                          borderRadius: BorderRadius.circular(8),
+                          border: Border.all(
+                            color: Colors.green,
+                            width: 1,
+                          ),
+                        ),
+                        child: const Text(
+                          'No Subscription Required',
+                          style: TextStyle(
+                            fontSize: 12,
+                            color: Colors.green,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                   const SizedBox(height: 24),
                   Row(
@@ -112,8 +172,8 @@ class GameDetailScreen extends StatelessWidget {
                       _buildInfoCard(
                         context,
                         Icons.cloud_outlined,
-                        'Cloud',
-                        'Streaming',
+                        'Free',
+                        'Cloud Play',
                       ),
                       const SizedBox(width: 12),
                       _buildInfoCard(
@@ -156,6 +216,7 @@ class GameDetailScreen extends StatelessWidget {
                   _buildRequirementItem('Latency', 'Below 50ms recommended'),
                   _buildRequirementItem('Device', 'Any modern device'),
                   _buildRequirementItem('Browser', 'Chrome, Edge, Safari'),
+                  _buildRequirementItem('Cost', '100% Free - No subscription'),
                   const SizedBox(height: 32),
                   SizedBox(
                     width: double.infinity,
@@ -176,7 +237,7 @@ class GameDetailScreen extends StatelessWidget {
                           Icon(Icons.play_arrow, size: 28),
                           SizedBox(width: 8),
                           Text(
-                            'Play Now',
+                            'Play Now - Free',
                             style: TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.bold,
@@ -204,7 +265,7 @@ class GameDetailScreen extends StatelessWidget {
                       child: const Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(Icons.download),
+                          Icon(Icons.favorite_border),
                           SizedBox(width: 8),
                           Text(
                             'Add to Library',
@@ -316,10 +377,11 @@ class GameDetailScreen extends StatelessWidget {
             ),
             const SizedBox(height: 8),
             Text(
-              'This may take a few moments',
+              'Free streaming - No subscription needed',
               style: TextStyle(
-                color: Colors.grey.shade400,
+                color: Colors.green.shade400,
                 fontSize: 12,
+                fontWeight: FontWeight.bold,
               ),
             ),
           ],
@@ -339,7 +401,7 @@ class GameDetailScreen extends StatelessWidget {
         Navigator.pop(context);
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('${game.title} is now ready to play!'),
+            content: Text('${game.title} is now ready to play - FREE!'),
             backgroundColor: Colors.green,
           ),
         );
